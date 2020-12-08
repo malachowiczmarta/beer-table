@@ -5,13 +5,29 @@ body {
     text-align: center;
     margin: 50px auto;
   }
+  
+  a {
+    text-decoration: none;
+  }
+
+  .table-container {
+    width: 90vW;
+    margin: auto;
+  }
+
   table {
     width: 100%;
     table-layout: fixed;
+    border-collapse: collapse;
   }
   
   .header-row-wrapper {
     background-color: rgb(235, 165, 75);
+    
+  }
+
+  .table-body {
+    cursor: pointer;
   }
   
   th {
