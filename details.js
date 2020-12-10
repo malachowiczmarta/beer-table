@@ -22,7 +22,7 @@ const getBeer = () => {
 const displayBeerDetails = (beer) => {
     const details = ["tagline", "first_brewed", "abv", "ibu", "ebc"];
     let header = document.querySelector(".details-container")
-    let beerName = document.createElement("h2");
+    let beerName = document.createElement("h3");
     beerName.innerText = beer.name;
     header.appendChild(beerName);
     details.map(item => {

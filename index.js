@@ -1,6 +1,7 @@
 const API_URL = "https://api.punkapi.com/v2/beers";
 const API_PAGINATION = "?page=2&per_page=40"
 
+
 let tableHeaders = [
   "id",
   "Name",
@@ -24,6 +25,7 @@ const getBeersList = () => {
       let beersList = data;
       createTableHeaders(tableHeaders);
       generateTable(beersList, tableHeaders);
+      createButton();
     })
     .catch((error) => {
       console.log(error);
@@ -39,6 +41,7 @@ function createTableHeaders(headers) {
     let textNode = document.createTextNode(headerText);
     header.appendChild(textNode);
     headerRow.appendChild(header);
+    
   });
   tableHeader.appendChild(headerRow);
 }
@@ -56,16 +59,27 @@ function generateTable(data, headers) {
                   <td>${item.abv}</td>
                   <td>${item.ibu}</td>
                   <td>${item.ebc}</td>
-                
             </tr>`;
 
     return (table.innerHTML += row);
   });
 }
 
+function createButton() {
+  const btnContainer = document.querySelector(".btn-container");
+  const nextBtn = document.createElement("button");
+  nextBtn.id = "nextBtn";
+  nextBtn.innerText = "next"
+  const prevBtn = document.createElement("button");
+  prevBtn.id = "prevBtn";
+  prevBtn.innerText = "previous"
+  
+  btnContainer.appendChild(prevBtn);
+  btnContainer.appendChild(nextBtn);
+}
+
 window.onload = () => {
   getBeersList();
-
 };
 
 
