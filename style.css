@@ -99,18 +99,18 @@ h2 {
 
 
   .table-container {
-    width: 90vW;
+    width: 70vW;
     margin: auto;
   }
 
   table {
     width: 100%;
-    table-layout: fixed;
+    table-layout: auto;
     border-collapse: collapse;
     font-size: 16px;
   }
   
-  .header-row-wrapper {
+  .table-header {
     background-color: #005B4B;
     color: white;
     
@@ -118,6 +118,7 @@ h2 {
 
   .table-body {
     cursor: pointer;
+    /* white-space: nowrap; */
   }
   
   th {
@@ -132,8 +133,12 @@ h2 {
     font-weight: 300;
   }
 
-  tr:hover {
-    background-color: #D6D6C8;
+  .table-body tr:nth-child(even) {
+    background-color: #e7e7e2;
+  }
+
+  .table-body tr:hover {
+    background-color: #d1d1cc;
   }
 
   button {
@@ -144,6 +149,7 @@ h2 {
   }
 
   .btn-container {
+    padding: 10px 0;
     width: 100%;
     display: flex;
     align-items: center;

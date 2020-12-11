@@ -20,16 +20,24 @@
 
     <section class="beer-table">
       <div class="table-container">
-        <div class="header-row-wrapper">
-          <table class="table-header"></table>
-        </div>
-        <table class="table-body"></table>
-      </div>
+        
+        <table id="tableId" class="table">
+          <thead class="table-header"></thead>
+          <tbody class="table-body"></tbody>
+        </table>
+        
       <div class="btn-container"></div>
     </section>
+
     
     
 
     <script src="./index.js"></script>
+    <script src='tablesort.min.js'></script>
+    <script src='tablesort.number.js'></script>
+    <script src='tablesort.date.js'></script>
+    <script>
+      new Tablesort(document.getElementById('tableId'));
+    </script>
   </body>
 </html>

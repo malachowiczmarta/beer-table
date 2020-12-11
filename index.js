@@ -1,5 +1,7 @@
 const API_URL = "https://api.punkapi.com/v2/beers";
-const API_PAGINATION = "?page=2&per_page=40"
+let PAGE_NUMBER = 1;
+const PER_PAGE = 15;
+// window.location.href = `index.html?page=${PAGE_NUMBER}`;
 
 
 let tableHeaders = [
@@ -12,8 +14,8 @@ let tableHeaders = [
   "ebc"
 ];
 
-const getBeersList = () => {
-  fetch(`${API_URL}${API_PAGINATION}`)
+const getBeersList = (currentPageNumber) => {
+  fetch(`${API_URL}?page=${currentPageNumber}&per_page=${PER_PAGE}`)
     .then((response) => {
       if (!response.ok) {
         throw Error(response.statusText);
@@ -23,9 +25,9 @@ const getBeersList = () => {
     .then((data) => {
       console.log(data);
       let beersList = data;
-      createTableHeaders(tableHeaders);
+      
       generateTable(beersList, tableHeaders);
-      createButton();
+      
     })
     .catch((error) => {
       console.log(error);
@@ -34,22 +36,20 @@ const getBeersList = () => {
 
 function createTableHeaders(headers) {
   let tableHeader = document.querySelector(".table-header");
-  let headerRow = document.createElement("tr");
-
   headers.forEach((headerText) => {
     let header = document.createElement("th");
     let textNode = document.createTextNode(headerText);
     header.appendChild(textNode);
-    headerRow.appendChild(header);
+    tableHeader.appendChild(header);
     
   });
-  tableHeader.appendChild(headerRow);
 }
 
 //dodać zeby sie wstawiało z headres wartosci id , name itp
 
-function generateTable(data, headers) {
-  let table = document.querySelector(".table-body");
+function generateTable(data) {
+  let tableBody = document.querySelector(".table-body");
+  tableBody.innerHTML = "";
   data.map((item) => {
     let row = `<tr onclick="window.location.href = 'details.html?beerId=${item.id}'">
                   <td>${item.id}</td>
@@ -61,7 +61,7 @@ function generateTable(data, headers) {
                   <td>${item.ebc}</td>
             </tr>`;
 
-    return (table.innerHTML += row);
+    return (tableBody.innerHTML += row);
   });
 }
 
@@ -70,16 +70,38 @@ function createButton() {
   const nextBtn = document.createElement("button");
   nextBtn.id = "nextBtn";
   nextBtn.innerText = "next"
+  nextBtn.setAttribute("onclick", "handleMovetoNextPage()");
   const prevBtn = document.createElement("button");
   prevBtn.id = "prevBtn";
   prevBtn.innerText = "previous"
+  prevBtn.setAttribute("onclick", "handleMovetoPrevPage()");
   
   btnContainer.appendChild(prevBtn);
   btnContainer.appendChild(nextBtn);
 }
 
+function handleMovetoNextPage() {
+  
+  console.log(PAGE_NUMBER)
+  PAGE_NUMBER ++; 
+  // window.location.href = `index.html?page=${PAGE_NUMBER}`;
+  console.log(PAGE_NUMBER);
+  getBeersList(PAGE_NUMBER);
+}
+
+function handleMovetoPrevPage() {
+ if (PAGE_NUMBER > 0) {
+   PAGE_NUMBER --; 
+    getBeersList(PAGE_NUMBER);
+ }
+ return PAGE_NUMBER;
+  
+}
+
 window.onload = () => {
-  getBeersList();
+  createTableHeaders(tableHeaders);
+  getBeersList(PAGE_NUMBER);
+  createButton();
 };
 
 
