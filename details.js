@@ -1,5 +1,5 @@
 const API_URL = "https://api.punkapi.com/v2/beers/";
-const beerId = '2';
+let beerId = '';
 
 const getBeer = () => {
   fetch(`${API_URL}${beerId}`)
@@ -33,7 +33,15 @@ const displayBeerDetails = (beer) => {
 
 }
 
+const getUrl = () => {
+    let currentHref = window.location.href;
+    let splitedCurrentHref = currentHref.split("=");
+    beerId =  splitedCurrentHref[1];
+    console.log(beerId)
+}
+
 
 window.onload = () => {
+    getUrl();
     getBeer();
 };

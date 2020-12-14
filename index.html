@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./reset.css" />
     <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
     <header>
       <section class="header-text-wrapper">
-        <h1>life is<br>too short<br>for a bad<br>beer</h1>
-        <h2>let's find the good ones!</h2>
+
+        <div class="first-heading">
+          <h1>life is too short<br>for a bad</h1>
+          <h1 class="beer-text" class="font-size-xl">beer</h1>
+          <img class="bottle-img" src="./bottle.png" /> 
+          <h2>let's<br>find the good<br>ones!</h2>
+        </div>
         <img class="hop-icon" src="./hop2.svg" />
-      </section>
-      <img class="beer-hand" src="./beer-hand.png" />
-      <!-- <img class="wheat-icon" src="./wheat.svg" /> -->
+      </section>  
+       
+        
+        
       
     </header>
 
@@ -31,13 +40,6 @@
 
     
     
-
     <script src="./index.js"></script>
-    <script src='tablesort.min.js'></script>
-    <script src='tablesort.number.js'></script>
-    <script src='tablesort.date.js'></script>
-    <script>
-      new Tablesort(document.getElementById('tableId'));
-    </script>
   </body>
 </html>
