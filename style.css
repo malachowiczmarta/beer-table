@@ -6,7 +6,7 @@
   a {
     text-decoration: none;
   }
-
+  
   h1 {
     margin-top: 20px;
     text-align: center;
@@ -26,13 +26,19 @@ h2 {
   font-family: 'Cookie', cursive;
 }
 
-  header {
-    height: 90vh;
-    text-align: center;
-    margin-bottom: 100px;
-    background-color: rgb(240, 208, 141);
-    position: relative;
-  }
+.flex-column-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  height: 90vh;
+  text-align: center;
+  margin-bottom: 100px;
+  background-color: rgb(255, 195, 65);
+  position: relative;
+}
 
 header::after {
   position: absolute;
@@ -46,9 +52,6 @@ header::after {
 
 .header-text-wrapper {
   padding-top: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   height: 100%;
   width: 100%;
@@ -57,9 +60,6 @@ header::after {
 
 .first-heading {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   height: 600px;
   width: 900px;
 }
@@ -87,7 +87,7 @@ header::after {
   z-index: 1;
   right: 170px;
   top: 220px;
-  filter: drop-shadow(10px 40px 30px rgba(0,0,0,0.45)); 
+  filter: drop-shadow(10px 40px 30px rgba(0,0,0,0.5)); 
 }
 
 
@@ -168,4 +168,6 @@ header::after {
     align-items: center;
     justify-content: center;
   }
+
+  
   

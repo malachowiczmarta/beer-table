@@ -26,18 +26,56 @@ const getBeer = () => {
 
 const displayBeerDetails = (beer) => {
     const details = ["tagline", "description", "first_brewed", "abv", "ibu", "ebc", "food_pairing", "brewers_tips"];
-    let header = document.querySelector(".details-container")
-    let beerName = document.createElement("h3");
-    beerName.innerText = beer.name;
-    header.appendChild(beerName);
-    details.map(item => {
-        let beerDetailsItem = document.createElement("p"); 
-        beerDetailsItem.innerText = `${item}: ${beer[item]}`;
-        header.appendChild(beerDetailsItem);
-    })
-    let img = document.createElement("img");
-    img.href = beer.image_url;
-    header.appendChild(img);
+    
+    let beerName = document.getElementById("name");
+    let beerNameHeader = document.createElement("h1");
+    beerNameHeader.innerText = beer.name;
+    beerName.appendChild(beerNameHeader);
+    let beerTagline = document.createElement("h2");
+    beerTagline.innerText = beer.tagline;
+    beerName.appendChild(beerTagline);
+
+    let beerDescWrapper = document.getElementById("description");
+    let beerDescList = document.createElement("ul");
+    beerDescWrapper.appendChild(beerDescList);
+
+    let firstBrewed = document.createElement("li");
+    firstBrewed.innerText = `First brewed: ${beer.first_brewed}`;
+    firstBrewed.classList.add("brewed");
+    beerDescList.appendChild(firstBrewed);
+
+    let description = document.createElement("li");
+    description.innerText = beer.description;
+    description.classList.add("description");
+    beerDescList.appendChild(description);
+
+    let foodPairing = document.createElement("li");
+    foodPairing.innerText = beer.food_pairing;
+    foodPairing.classList.add("food_pairing");
+    beerDescList.appendChild(foodPairing);
+
+    let brewersTips = document.createElement("li");
+    brewersTips.innerText = beer.brewers_tips;
+    brewersTips.classList.add("brewers_tips");
+    beerDescList.appendChild(brewersTips);
+
+    let abvWrapper = document.querySelector(".grid-item-abv");
+    let abvPara = document.createElement("p");
+    abvPara.classList.add("number");
+    abvPara.innerText = beer.abv + " %";
+    abvWrapper.appendChild(abvPara);
+
+    let ibuWrapper = document.querySelector(".grid-item-ibu");
+    let ibuPara = document.createElement("p");
+    ibuPara.classList.add("number");
+    ibuPara.innerText = beer.ibu;
+    ibuWrapper.appendChild(ibuPara);
+
+    let ebcWrapper = document.querySelector(".grid-item-ebc");
+    let ebcPara = document.createElement("p");
+    ebcPara.classList.add("number");
+    ebcPara.innerText = beer.ebc;
+    ebcWrapper.appendChild(ebcPara);
 
 }
 
@@ -55,6 +93,14 @@ const createdHopsChart = (name, ingredientsKind) => {
     data = {
         datasets: [{
             data: ingredientsKindAmount,
+            backgroundColor: [
+                '#FFC300',
+                '#FFEECA',
+                '#FFBC52',
+                '#CE9124',
+                '#9E6800',
+                '#FFC300'
+            ],
         }],
         labels: ingredientsKindName,
     };
@@ -62,18 +108,24 @@ const createdHopsChart = (name, ingredientsKind) => {
     let doughnutChart = new Chart(hopsChart, {
         type: 'doughnut',
         data: data,
-        backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-        ],
         options: {
             title: {
                 display: true,
                 text: `${name} amount`
+            },
+            legend: {
+                display: true,
+                position: 'right',
+                align: "start",
+                // boxWidth: 3,
+            },
+            layout: {
+                padding: {
+                    left: 50,
+                    right: 10,
+                    top: 0,
+                    bottom: 40
+                }
             }
         }
     });

@@ -1,0 +1,172 @@
+body {
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+
+h1 {
+    margin: 10px 10px;
+    font-size: 40px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900;
+    font-family: 'Darker Grotesque', sans-serif;
+    -webkit-text-fill-color: #fff;
+    -webkit-text-stroke: 2px #000;
+}
+
+h3 {
+    text-align: center;
+}
+
+.number {
+    
+}
+
+.details-nav-container {
+    height: 70px;
+    margin-bottom: 50px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+
+  .details-nav-container a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    margin-left: 30px;
+  }
+
+  canvas {
+    width: 300px;
+    height: 200px;
+  }
+
+  .grid-container {
+    margin: 0 auto;
+    width: 90vw;
+    height: 75vh;
+    display: grid;
+    grid-template-columns: 15% 5% 15% 5% 15% 2% 43%;
+    grid-template-rows: 5% 20% 5% 28% 5% 31%;
+    grid-template-areas: 
+    "abvHeader . ibuHeader . ebcHeader . chartMalt"
+    "abv . ibu . ebc .  chartMalt"
+    ". . . . . . chartHops"
+    " main main main main main . chartHops"
+    "desc desc desc desc desc . chartYeast"
+    "desc desc desc desc desc . chartYeast";
+  }
+
+.grid-item-header-abv, .grid-item-header-ibu, .grid-item-header-ebc {
+    justify-self: stretch;
+    align-self: center;
+    background-color: rgb(255, 195, 65);
+    border-radius: 5px;
+    border-bottom: none;
+    
+}
+
+.grid-item-header-abv {
+    grid-area: abvHeader;
+      
+}
+
+.grid-item-header-ibu {
+    grid-area: ibuHeader;
+}
+
+.grid-item-header-ebc {
+    grid-area: ebcHeader;
+
+}
+
+.grid-item-ibu, .grid-item-ebc, .grid-item-abv {
+    justify-self: stretch;
+    /* align-self: center; */
+    font-size: 50px;
+    text-align: center;
+    background-color: #FFEECA;
+    border-radius: 5px;
+    border-top: none;
+}
+
+.grid-item-abv {
+    grid-area: abv;
+    
+}
+
+.grid-item-ibu {
+    grid-area: ibu;
+
+}
+
+.grid-item-ebc {
+    grid-area: ebc;
+}
+
+.grid-item-chartMalt {
+    grid-area: chartMalt;
+    justify-self: stretch;
+    align-self: center;
+}
+
+.grid-item-chartHops {
+    grid-area: chartHops;
+}
+
+.grid-item-chartYeast {
+    grid-area: chartYeast;
+}
+
+.grid-item-main {
+    grid-area: main;
+    place-self: center;
+}
+
+.grid-item-desc {
+    grid-area: desc;
+}
+
+li {
+    list-style: none;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 30px 0 0 25px;
+}
+
+
+li::before {
+    
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: center;
+    content: "";
+    font-size: 16px;
+    position: absolute;
+    left: -20px;
+    top: 22px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: rgb(255, 195, 65);
+}
+
+.brewed::before {
+    background-image: url(./img/distillatory.png);
+}
+
+.description::before {
+    background-image: url(./img/information.png);
+}
+
+.food_pairing::before {
+    background-image: url(./img/restaurant.png);
+}
+
+.brewers_tips::before {
+    background-image: url(./img/light-bulb.png);
+}
