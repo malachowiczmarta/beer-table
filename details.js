@@ -7,17 +7,20 @@ const getBeer = () => {
     .then((response) => {
       if (!response.ok) {
         throw Error(response.statusText);
+      }else {
+        let loader = document.querySelector('#loader');
+        loader.classList.add("hide-loader"); 
+        return response.json()
       }
-      return response.json();
+      
     })
     .then((data) => {
-      console.log(data);
       let beer = data[0];
       const {malt, hops, yeast} = beer.ingredients;
       displayBeerDetails(beer);
       createdHopsChart("Malt", malt);
       createdHopsChart("Hops", hops);
-      createdHopsChart("Yeast", hops);
+      createdHopsChart("Yeast", yeast);
     })
     .catch((error) => {
       console.log(error);
@@ -48,11 +51,20 @@ const displayBeerDetails = (beer) => {
     description.innerText = beer.description;
     description.classList.add("description");
     beerDescList.appendChild(description);
+    
+    let foodPairingContainer = document.createElement("li");
+    let foodPairingArr = beer.food_pairing;
+    let foodParWithoutFirstElem = foodPairingArr.filter( (item, index) => {
+        if(index !== 0){
+             return item;
+        }
+   }).map(item => {
+        return " " + item.toLowerCase();
+    });
 
-    let foodPairing = document.createElement("li");
-    foodPairing.innerText = beer.food_pairing;
-    foodPairing.classList.add("food_pairing");
-    beerDescList.appendChild(foodPairing);
+    foodPairingContainer.innerText = foodPairingArr[0] + "," + foodParWithoutFirstElem + ".";
+    foodPairingContainer.classList.add("food_pairing");
+    beerDescList.appendChild(foodPairingContainer);
 
     let brewersTips = document.createElement("li");
     brewersTips.innerText = beer.brewers_tips;
@@ -62,7 +74,7 @@ const displayBeerDetails = (beer) => {
     let abvWrapper = document.querySelector(".grid-item-abv");
     let abvPara = document.createElement("p");
     abvPara.classList.add("number");
-    abvPara.innerText = beer.abv + " %";
+    abvPara.innerText = beer.abv + "%";
     abvWrapper.appendChild(abvPara);
 
     let ibuWrapper = document.querySelector(".grid-item-ibu");
@@ -80,15 +92,21 @@ const displayBeerDetails = (beer) => {
 }
 
 
-const createdHopsChart = (name, ingredientsKind) => {
-    console.log(ingredientsKind)
+const createdHopsChart = (ingrName, ingredientsKind) => {
+    let ingredientsKindAmount = 0;
+    let ingredientsKindName = "brak danych";
+    if (ingrName === "Yeast") {
+        ingredientsKindAmount = [1];
+        ingredientsKindName = [ingredientsKind];
+    }else {
+        ingredientsKindAmount = ingredientsKind.map(kind => {
+            return kind.amount.value;
+        });
+        ingredientsKindName = ingredientsKind.map(kind => {
+            return kind.name;
+        });
+    }
     
-    const ingredientsKindName = ingredientsKind.map(kind => {
-        return kind.name;
-    });
-    const ingredientsKindAmount = ingredientsKind.map(kind => {
-        return kind.amount.value;
-    });
     
     data = {
         datasets: [{
@@ -104,20 +122,19 @@ const createdHopsChart = (name, ingredientsKind) => {
         }],
         labels: ingredientsKindName,
     };
-    let hopsChart = document.getElementById(`chart${name}`).getContext("2d");
+    let hopsChart = document.getElementById(`chart${ingrName}`).getContext("2d");
     let doughnutChart = new Chart(hopsChart, {
         type: 'doughnut',
         data: data,
         options: {
             title: {
                 display: true,
-                text: `${name} amount`
+                text: `${ingrName}`
             },
             legend: {
                 display: true,
-                position: 'right',
+                position: 'bottom',
                 align: "start",
-                // boxWidth: 3,
             },
             layout: {
                 padding: {
@@ -137,7 +154,6 @@ const getUrl = () => {
     let currentHref = window.location.href;
     let splitedCurrentHref = currentHref.split("=");
     beerId =  splitedCurrentHref[1];
-    console.log(beerId)
 }
 
 

@@ -50,7 +50,7 @@ header::after {
   background-color: black;
 }
 
-.header-text-wrapper {
+.header-wrapper {
   padding-top: 50px;
   align-items: center;
   height: 100%;
@@ -58,13 +58,13 @@ header::after {
   
 }
 
-.first-heading {
+.heading-img-container {
   position: relative;
   height: 600px;
   width: 900px;
 }
 
-.first-heading h2 {
+.heading-img-container h2 {
   position: absolute;
   z-index: 1;
   bottom: -40px;
@@ -96,78 +96,68 @@ header::after {
   animation: .7s down  infinite alternate;
 }
 
-.wheat-icon {
-  height: 300px;
-  position: absolute;
-  left: 40px;
-  bottom: 0px; 
-}
-
 @keyframes down { 
   0% {transform:translateY(0px)} 
   100% {transform:translateY(20px)} 
 }
 
+.table-container {
+  width: 70vW;
+  margin: auto;
+}
 
-  .table-container {
-    width: 70vW;
-    margin: auto;
-  }
+table {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+  font-size: 16px;
+}
 
-  table {
-    width: 100%;
-    table-layout: auto;
-    border-collapse: collapse;
-    font-size: 16px;
-  }
+.table-header {
   
-  .table-header {
-    
-    background-color: black;
-    color: white;
-    text-align: center;
-    font-weight: 600;
-  }
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+}
 
-  th {
-    padding: 20px 15px;
-  }
+th {
+  padding: 20px 15px;
+}
 
-  .table-body {
-    cursor: pointer;
-    /* white-space: nowrap; */
-  }
-  
-  
-  td {
-    padding: 15px;
-    text-align: left;
-    vertical-align: middle;
-    font-weight: 300;
-  }
+.table-body {
+  cursor: pointer;
+}
 
-  .table-body tr:nth-child(even) {
-    background-color: #e7e7e2;
-  }
+td {
+  padding: 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+}
 
-  .table-body tr:hover {
-    background-color: #d1d1cc;
-  }
+.table-body tr:nth-child(even) {
+  background-color: #e7e7e2;
+}
 
-  button {
-    padding: 10px 5px;
-    width: 65px;
-    height: 40px;
-    margin-right: 5px;
-  }
+.table-body tr:hover {
+  background-color: #d1d1cc;
+}
 
-  .btn-container {
-    padding: 10px 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+button {
+  padding: 10px 5px;
+  width: 65px;
+  height: 40px;
+  margin-right: 5px;
+}
+
+.btn-container {
+  padding: 10px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
   
   
