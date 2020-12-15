@@ -1,9 +1,6 @@
 const API_URL = "https://api.punkapi.com/v2/beers";
 let PAGE_NUMBER = 1;
 const PER_PAGE = 15;
-// window.location.href = `index.html?page=${PAGE_NUMBER}`;
-
-
 let tableHeaders = [
   "id",
   "Name",
@@ -19,15 +16,15 @@ const getBeersList = (currentPageNumber) => {
     .then((response) => {
       if (!response.ok) {
         throw Error(response.statusText);
+      }else {
+        let loader = document.querySelector('#loader');
+        loader.classList.add("hide-loader"); 
+        return response.json()
       }
-      return response.json();
     })
     .then((data) => {
-      console.log(data);
       let beersList = data;
-      
       generateTable(beersList, tableHeaders);
-      
     })
     .catch((error) => {
       console.log(error);

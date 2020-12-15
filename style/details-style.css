@@ -5,7 +5,7 @@ body {
 
 h1 {
     margin: 10px 10px;
-    font-size: 40px;
+    font-size: 50px;
     text-transform: uppercase;
     text-align: center;
     font-weight: 900;
@@ -19,48 +19,51 @@ h2, h3 {
 }
 
 .details-nav-container {
-height: 70px;
-margin-bottom: 50px;
-background-color: black;
-color: white;
-display: flex;
-align-items: center;
+    height: 70px;
+    margin-bottom: 50px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
 }
 
 .details-nav-container a {
-color: white;
-text-decoration: none;
-font-size: 24px;
-margin-left: 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    margin-left: 30px;
 }
 
 .grid-container {
     position: relative;
-margin: 0 auto;
-width: 90vw;
-height: 100vh;
-display: grid;
-grid-template-columns: 19% 5% 19% 5% 19% 2% 29%;
-grid-template-rows: 5% 15% 2% 28% 2% 42%;
-grid-template-areas: 
-"abvHeader . ibuHeader . ebcHeader . chartMalt"
-"abv . ibu . ebc .  chartMalt"
-". . . . . . chartHops"
-" main main main main main . chartHops"
-"desc desc desc desc desc . chartYeast"
-"desc desc desc desc desc . chartYeast";
+    margin: 0 auto;
+    width: 90vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 19% 5% 19% 5% 19% 2% 29%;
+    grid-template-rows: 5% 15% 2% 28% 2% 42%;
+    grid-template-areas: 
+    "abvHeader . ibuHeader . ebcHeader . chartMalt"
+     "abv . ibu . ebc .  chartMalt" 
+    ". . . . . . chartHops" 
+    " main main main main main . chartHops" 
+    "desc desc desc desc desc . chartYeast" 
+    "desc desc desc desc desc . chartYeast";
 }
 
 .grid-item-header-abv, .grid-item-header-ibu, .grid-item-header-ebc {
     justify-self: stretch;
-    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(255, 195, 65);
     border-radius: 5px;
-    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .grid-item-header-abv {
-    grid-area: abvHeader;  
+    grid-area: abvHeader;
 }
 
 .grid-item-header-ibu {
@@ -84,7 +87,7 @@ grid-template-areas:
 }
 
 .grid-item-abv {
-    grid-area: abv; 
+    grid-area: abv;
 }
 
 .grid-item-ibu {
@@ -130,7 +133,6 @@ li {
     padding: 30px 0 0 25px;
 }
 
-
 li::before {
     background-repeat: no-repeat;
     background-size: 30px 30px;
@@ -147,47 +149,19 @@ li::before {
 }
 
 .brewed::before {
-    background-image: url(./img/distillatory.png);
+    background-image: url(../img/distillatory.png);
 }
 
 .description::before {
-    background-image: url(./img/information.png);
+    background-image: url(../img/information.png);
 }
 
 .food_pairing::before {
-    background-image: url(./img/restaurant.png);
+    background-image: url(../img/restaurant.png);
 }
 
 .brewers_tips::before {
-    background-image: url(./img/light-bulb.png);
+    background-image: url(../img/light-bulb.png);
 }
 
-.loader-wrapper {
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-}
 
-.loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
-}
-
-.hide-loader{
-display:none;
-}

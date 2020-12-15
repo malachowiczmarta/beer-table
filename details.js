@@ -28,7 +28,6 @@ const getBeer = () => {
 };
 
 const displayBeerDetails = (beer) => {
-    const details = ["tagline", "description", "first_brewed", "abv", "ibu", "ebc", "food_pairing", "brewers_tips"];
     
     let beerName = document.getElementById("name");
     let beerNameHeader = document.createElement("h1");
@@ -113,6 +112,7 @@ const createdHopsChart = (ingrName, ingredientsKind) => {
             data: ingredientsKindAmount,
             backgroundColor: [
                 '#FFC300',
+                '#836400',
                 '#FFEECA',
                 '#FFBC52',
                 '#CE9124',
